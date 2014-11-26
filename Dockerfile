@@ -1,10 +1,27 @@
-FROM ubuntu:14.04
+#From ubuntu LTS
+FROM ubuntu:14.04.1
+# Never ask for confirmations
+ENV DEBIAN_FRONTEND noninteractive
+RUN echo "deb http://mirrors.aliyun.com/ubuntu trusty main universe restricted" > /etc/apt/sources.list
+RUN echo "deb http://mirrors.aliyun.com/ubuntu trusty-updates main universe restricted" >> /etc/apt/sources.list
+RUN echo "deb http://mirrors.aliyun.com/ubuntu trusty-security main universe restricted" >> /etc/apt/sources.list
 
-MAINTAINER Meng Bo "mengbo@lnu.edu.cn"
+# Update
+RUN apt-get update -qq
 
-RUN echo "deb http://archive.ubuntu.com/ubuntu trusty main universe" > /etc/apt/sources.list
-RUN apt-get update
-RUN apt-get -y install curl build-essential
+# Install HTTPS support for APT.
+RUN apt-get install -y --no-install-recommends apt-transport-https ca-certificates
+# Install add-apt-repository
+RUN apt-get install -y --no-install-recommends  software-properties-common
+
+# Upgrade all packages.
+RUN apt-get dist-upgrade -y --no-install-recommends
+
+# Install some common components
+RUN apt-get install -y --no-install-recommends wget git curl unzip zip bzip2 less nano vim
+
+# Install development components.
+RUN apt-get install -y --no-install-recommends build-essential make expect
 
 RUN mkdir -p /usr/local/src;\
   cd /usr/local/src;\

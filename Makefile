@@ -1,5 +1,5 @@
 # Change this to suit your needs.
-NAME=docker-dnscrypt
+NAME=dnscrypt
 USERNAME=muzili
 RESOLVER_NAME=opendns
 

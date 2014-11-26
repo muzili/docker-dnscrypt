@@ -6,10 +6,10 @@ docker-dnscrypt
 
 ## Image Creation
 
-This example creates the image with the tag `mengbo/docker-dnscrypt`, but you can change this to use your own username.
+This example creates the image with the tag `muzili/dnscrypt`, but you can change this to use your own username.
 
 ```
-$ docker build -t="mengbo/docker-dnscrypt" .
+$ docker build -t="muzili/dnscrypt" .
 ```
 
 Alternately, you can run the following if you have *make* installed...
@@ -23,7 +23,7 @@ You can also specify custom variables by change the Makefile.
 You can run it by the following command...
 
 ```
-$ docker run --name docker-dnscrypt -d -p 53:53 -p 53:53/udp mengbo/docker-dnscrypt
+$ docker run --name dnscrypt -d -p 53:53 -p 53:53/udp muzili/dnscrypt
 ```
 
 
